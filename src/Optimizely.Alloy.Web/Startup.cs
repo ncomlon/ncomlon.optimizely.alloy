@@ -1,9 +1,11 @@
-using Optimizely.Alloy.Web.Extensions;
 using EPiServer.Cms.Shell;
 using EPiServer.Cms.UI.AspNetIdentity;
 using EPiServer.Scheduler;
 using EPiServer.ServiceLocation;
 using EPiServer.Web.Routing;
+using Microsoft.AspNetCore.Authentication;
+using Optimizely.Alloy.Web.Extensions;
+using Optimizely.Alloy.Web.SecretAuthentication;
 
 namespace Optimizely.Alloy.Web;
 
@@ -40,6 +42,13 @@ public class Startup
             options.IdleTimeout = TimeSpan.FromSeconds(10);
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
+        });
+
+        services.Configure<AuthenticationOptions>(options =>
+        {
+            options.AddScheme<SecretAuthenticationHandler>(
+                SecretAuthenticationHandler.SchemeName,
+                SecretAuthenticationHandler.DisplayName);
         });
     }
 
