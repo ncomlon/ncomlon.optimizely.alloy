@@ -50,6 +50,11 @@ public class Startup
                 SecretAuthenticationHandler.SchemeName,
                 SecretAuthenticationHandler.DisplayName);
         });
+
+        services.AddContentDeliveryApi(SecretAuthenticationHandler.SchemeName, option =>
+        {
+            option.DisableScopeValidation = true;
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
