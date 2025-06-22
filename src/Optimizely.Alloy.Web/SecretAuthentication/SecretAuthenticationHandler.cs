@@ -22,7 +22,7 @@ namespace Optimizely.Alloy.Web.SecretAuthentication
             {
                 _principal = new ClaimsPrincipal(new ClaimsIdentity([
                     new Claim(ClaimTypes.Name, "SecretUser"),
-                new Claim(ClaimTypes.Role, "CmsAdmins")
+                new Claim(ClaimTypes.Role, "WebAdmins")
                 ], SchemeName));
             }
 
