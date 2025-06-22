@@ -55,6 +55,11 @@ public class Startup
         {
             option.DisableScopeValidation = true;
         });
+
+        services.AddContentManagementApi(SecretAuthenticationHandler.SchemeName, option =>
+        {
+            option.DisableScopeValidation = true;
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
